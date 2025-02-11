@@ -18,6 +18,7 @@ export class BoardComponent implements OnInit {
 
   ngOnInit(): void {
     this.board = this.boardService.getBoard();
+    console.log(this.board);
   }
 
   keys(): Array<number> {
@@ -58,6 +59,9 @@ export class BoardComponent implements OnInit {
     if (activeSquare) {
       this.boardService.swapSquares(activeSquare, square);
       this.deactivateSquare();
+      if (this.isAllSquaresExpected()) {
+        alert('Congratulations! You solved the puzzle!');
+      }
     }
   }
 
@@ -65,5 +69,9 @@ export class BoardComponent implements OnInit {
     this.boardService.setActive(square);
     this.boardService.resetFocus();
     neighbours.forEach(neighbour => this.boardService.setFocus(neighbour));
+  }
+
+  private isAllSquaresExpected(): boolean {
+    return this.boardService.isAllSquaresWhitValueExpected();
   }
 }

@@ -13,7 +13,7 @@ import { Board } from '../board/board.interface';
 export class SquareComponent implements OnInit{
   @Input({required: true}) square!: number
   @Output() squareSelected = new EventEmitter()
-  board: Board = {dimension: 0, table: {}}
+  board: Board = { dimension: 0, table: {} }
 
   constructor( private boardService: BoardService) {}
 

@@ -67,6 +67,8 @@ export class BoardService {
     const temp = this.board.table[square1];
     this.board.table[square1] = this.board.table[square2];
     this.board.table[square2] = temp;
+
+    console.log(this.board.table);
   }
 
   setActive(square: number): void {
@@ -76,5 +78,14 @@ export class BoardService {
 
   setFocus(square: number): void {
     this.board.table[square].focus = true;
+  }
+
+  isAllSquaresWhitValueExpected(): boolean {
+    for (const square in this.board.table) {
+      if (square !== this.board.table[square].valueExpected.toLocaleString()) {
+        return false;
+      }
+    }
+    return true;
   }
 }
