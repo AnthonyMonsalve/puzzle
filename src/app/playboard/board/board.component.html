@@ -1,0 +1,5 @@
+<div class="board">
+  @for (square of keys(); track $index) {
+    <app-square [square]="square" (squareSelected)="onSelectSquare($event)" style="flex: 1"></app-square>
+  }
+</div>
