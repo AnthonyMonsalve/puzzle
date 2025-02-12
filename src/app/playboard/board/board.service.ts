@@ -10,7 +10,7 @@ import { Board, Square } from './board.interface';
 })
 export class BoardService {
   boards: Array<Board> = [board2, board3, board4, board5];
-  board: Board = this.boards[0];
+  board: Board = this.boards[2];
 
   constructor() {}
 
