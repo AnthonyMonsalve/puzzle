@@ -1,24 +1,34 @@
 import { CommonModule } from '@angular/common';
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Board, Square } from '../board/board.interface';
 import { BoardService } from '../board/board.service';
-import { Board } from '../board/board.interface';
 
 @Component({
   selector: 'app-square',
   standalone: true,
   imports: [CommonModule],
   templateUrl: './square.component.html',
-  styleUrl: './square.component.css'
+  styleUrl: './square.component.css',
 })
-export class SquareComponent implements OnInit{
-  @Input({required: true}) square!: number
-  @Output() squareSelected = new EventEmitter()
-  board: Board = { dimension: 0, table: {} }
+export class SquareComponent implements OnInit {
+  @Input({ required: true }) square!: number;
+  @Input({ required: true }) squareContent!: Square;
+  @Input({ required: true }) gameIsOver!: boolean;
 
-  constructor( private boardService: BoardService) {}
+  @Output() squareSelected = new EventEmitter();
+  board: Board = {
+    dimension: 0,
+    image: 'airplane.jpg',
+    blankImage: 'image.png',
+    table: {},
+  };
+
+  constructor(private boardService: BoardService) {}
 
   get imagePath() {
-    return `assets/images/${this.board.table[this.square].image}`;
+    if (this.squareContent.isBlank && !this.gameIsOver)
+      return `assets/images/${this.board.blankImage}`;
+    else return `assets/images/${this.board.image}`;
   }
 
   get backgroundColor() {
@@ -26,7 +36,7 @@ export class SquareComponent implements OnInit{
   }
 
   get backgroundImage() {
-    if (this.board.table[this.square].image) {
+    if (this.board.image && this.board.blankImage) {
       return `url(${this.imagePath})`;
     }
     return 'none';
@@ -36,11 +46,11 @@ export class SquareComponent implements OnInit{
     return this.board.table[this.square].positionImage;
   }
 
-  ngOnInit(){
-    this.board = this.boardService.getBoard()
+  ngOnInit() {
+    this.board = this.boardService.getBoard();
   }
 
-  onSelectSquare(){
-    this.squareSelected.emit(this.square)
+  onSelectSquare() {
+    this.squareSelected.emit(this.square);
   }
 }

@@ -1,20 +1,21 @@
-import { Component, OnInit } from '@angular/core';
-import { BoardService } from './board.service';
-import { Board } from './board.interface';
 import { CommonModule } from '@angular/common';
+import { Component, OnInit } from '@angular/core';
 import { SquareComponent } from '../square/square.component';
+import { Board } from './board.interface';
+import { BoardService } from './board.service';
 
 @Component({
   selector: 'app-board',
   standalone: true,
   imports: [CommonModule, SquareComponent],
   templateUrl: './board.component.html',
-  styleUrls: ['./board.component.css']
+  styleUrls: ['./board.component.css'],
 })
 export class BoardComponent implements OnInit {
   board!: Board;
+  gameIsOver = false;
 
-  constructor(private boardService: BoardService) { }
+  constructor(private boardService: BoardService) {}
 
   ngOnInit(): void {
     this.board = this.boardService.getBoard();
@@ -26,13 +27,11 @@ export class BoardComponent implements OnInit {
   }
 
   onSelectSquare(square: number): void {
-    const currentSquare = this.boardService.getSquare(square);
-    if (currentSquare.active) {
-      this.deactivateSquare();
-      return;
+    const blankNeighbour = this.boardService.searchBlackInNeighbours(square);
+    if (blankNeighbour !== null) {
+      this.boardService.swapSquares(square, blankNeighbour);
+      this.gameIsOver = this.boardService.isAllSquaresWhitValueExpected();
     }
-
-    this.handleSquareSelection(square);
   }
 
   private deactivateSquare(): void {
@@ -51,12 +50,18 @@ export class BoardComponent implements OnInit {
   }
 
   private hasActiveNeighbours(neighbours: number[]): boolean {
-    return neighbours.some(neighbour => this.boardService.isActivated(neighbour));
+    return neighbours.some((neighbour) =>
+      this.boardService.isActivated(neighbour)
+    );
   }
 
   private trySwapWithActiveSquare(square: number): void {
     const activeSquare = this.boardService.findActive();
-    if (activeSquare && (this.board.table[activeSquare].isBlank || this.board.table[square].isBlank)) {
+    if (
+      activeSquare &&
+      (this.board.table[activeSquare].isBlank ||
+        this.board.table[square].isBlank)
+    ) {
       this.boardService.swapSquares(activeSquare, square);
       this.deactivateSquare();
       if (this.isAllSquaresExpected()) {
@@ -65,7 +70,10 @@ export class BoardComponent implements OnInit {
     }
   }
 
-  private activateSquareAndSetFocus(square: number, neighbours: number[]): void {
+  private activateSquareAndSetFocus(
+    square: number,
+    neighbours: number[]
+  ): void {
     this.boardService.setActive(square);
   }
 
