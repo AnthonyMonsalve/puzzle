@@ -67,11 +67,6 @@ export class BoardComponent implements OnInit {
 
   private activateSquareAndSetFocus(square: number, neighbours: number[]): void {
     this.boardService.setActive(square);
-    this.boardService.resetFocus();
-    if (this.board.table[square].isBlank) {
-      neighbours.forEach(neighbour => this.boardService.setFocus(neighbour));
-      return;
-    }
   }
 
   private isAllSquaresExpected(): boolean {

@@ -21,10 +21,6 @@ export class SquareComponent implements OnInit{
     return `assets/images/${this.board.table[this.square].image}`;
   }
 
-  get boxShadow() {
-    return this.board.table[this.square].focus ? 'inset red 0px 0px 0px 2px' : 'none';
-  }
-
   get backgroundColor() {
     return this.board.table[this.square].active ? 'purple' : 'lightgrey';
   }
