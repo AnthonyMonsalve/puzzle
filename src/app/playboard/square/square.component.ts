@@ -36,6 +36,10 @@ export class SquareComponent implements OnInit{
     return 'none';
   }
 
+  get backgroundPosition() {
+    return this.board.table[this.square].positionImage;
+  }
+
   ngOnInit(){
     this.board = this.boardService.getBoard()
   }

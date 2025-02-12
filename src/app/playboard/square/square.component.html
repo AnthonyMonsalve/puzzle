@@ -1,6 +1,6 @@
 <div class="tile draggable" (click)="onSelectSquare()"
 [style.boxShadow]="boxShadow"
 [style.backgroundColor]="backgroundColor"
-[ngStyle]="{'background-image': backgroundImage}">
-{{ board.table[square].value !== 0 ? board.table[square].value : '' }}
+[ngStyle]="{'background-image': backgroundImage, 'background-size': '600px', 'background-position': backgroundPosition}">
+
 </div>

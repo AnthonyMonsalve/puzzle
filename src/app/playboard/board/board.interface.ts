@@ -3,6 +3,8 @@ export interface Square {
   active: boolean;
   image: string;
   valueExpected: number;
+  positionImage: string;
+  isBlank: boolean
 }
 
 export interface Board {

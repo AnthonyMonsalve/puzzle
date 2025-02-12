@@ -56,7 +56,7 @@ export class BoardComponent implements OnInit {
 
   private trySwapWithActiveSquare(square: number): void {
     const activeSquare = this.boardService.findActive();
-    if (activeSquare) {
+    if (activeSquare && (this.board.table[activeSquare].isBlank || this.board.table[square].isBlank)) {
       this.boardService.swapSquares(activeSquare, square);
       this.deactivateSquare();
       if (this.isAllSquaresExpected()) {
@@ -68,7 +68,10 @@ export class BoardComponent implements OnInit {
   private activateSquareAndSetFocus(square: number, neighbours: number[]): void {
     this.boardService.setActive(square);
     this.boardService.resetFocus();
-    neighbours.forEach(neighbour => this.boardService.setFocus(neighbour));
+    if (this.board.table[square].isBlank) {
+      neighbours.forEach(neighbour => this.boardService.setFocus(neighbour));
+      return;
+    }
   }
 
   private isAllSquaresExpected(): boolean {

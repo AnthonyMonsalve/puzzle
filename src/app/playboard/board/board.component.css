@@ -1,6 +1,6 @@
 .board {
-  width: 800px;
-  height: 800px;
+  width: 600px;
+  height: 600px;
   display: grid;
   grid-template-columns: repeat(5, 1fr);
   grid-gap: 5px;
