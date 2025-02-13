@@ -13,17 +13,21 @@ import { BoardService } from '../board/board.service';
 export class SquareComponent implements OnInit {
   @Input({ required: true }) square!: number;
   @Input({ required: true }) squareContent!: Square;
-  @Input({ required: true }) gameIsOver!: boolean;
 
   @Output() squareSelected = new EventEmitter();
-  board: Board = {
-    dimension: 0,
-    image: 'airplane.jpg',
-    blankImage: 'image.png',
-    table: {},
-  };
 
-  constructor(private boardService: BoardService) {}
+  board!: Board;
+  gameIsOver!: boolean;
+
+  constructor(private boardService: BoardService) {
+    this.boardService.getGameIsOver().subscribe((isOver) => {
+      this.gameIsOver = isOver;
+    });
+  }
+
+  ngOnInit() {
+    this.board = this.boardService.getBoard();
+  }
 
   get imagePath() {
     if (this.squareContent.isBlank && !this.gameIsOver)
@@ -36,18 +40,11 @@ export class SquareComponent implements OnInit {
   }
 
   get backgroundImage() {
-    if (this.board.image && this.board.blankImage) {
-      return `url(${this.imagePath})`;
-    }
-    return 'none';
+    return `url(${this.imagePath})`;
   }
 
   get backgroundPosition() {
     return this.board.table[this.square].positionImage;
-  }
-
-  ngOnInit() {
-    this.board = this.boardService.getBoard();
   }
 
   onSelectSquare() {

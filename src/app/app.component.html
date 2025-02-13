@@ -1,3 +1,5 @@
 <main id="main">
-  <app-board />
+  <app-board *ngIf="gameStart" />
+  <app-game-over (selectLevel)="onSelectLevel($event)" />
+  <app-play-game [gameStart]="gameStart" [selectingLevel]="goToSelectLevel" />
 </main>

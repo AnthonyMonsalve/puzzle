@@ -1,11 +1,6 @@
 <div class="board" [ngStyle]="{'grid-template-columns': 'repeat(' + board.dimension + ', 1fr)'}">
   @for (square of keys(); track $index) {
-  <app-square [square]="square" [gameIsOver]="gameIsOver" [squareContent]="board.table[square]"
-    (squareSelected)="onSelectSquare($event)" style="flex: 1"></app-square>
+  <app-square [square]="square" [squareContent]="board.table[square]" (squareSelected)="onSelectSquare($event)"
+    style="flex: 1"></app-square>
   }
-</div>
-
-<div *ngIf="gameIsOver">
-  <h1>Game finished. You win</h1>
-  <button>Restart Game</button>
 </div>

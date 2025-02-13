@@ -10,5 +10,6 @@ export interface Board {
   dimension: number;
   image: string;
   blankImage: string;
+  initialTable: { [key: number]: Square };
   table: { [key: number]: Square };
 }

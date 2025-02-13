@@ -1,0 +1,22 @@
+<app-message *ngIf="!gameStart">
+  @if(selectingLevel){
+  <p>
+    <span style="font-weight: 600;">Instrucciones:</span> Selecciona un nivel para comenzar a jugar 👇
+  </p>
+  <div class="d-flex justify-content-center align-items-center">
+    <app-select-level (startGame)="onStartGame($event)" [dimension]="2"></app-select-level>
+    <app-select-level (startGame)="onStartGame($event)" [dimension]="3"></app-select-level>
+    <app-select-level (startGame)="onStartGame($event)" [dimension]="4"></app-select-level>
+    <app-select-level (startGame)="onStartGame($event)" [dimension]="5"></app-select-level>
+  </div>
+  }@else{
+  <img class="logo" src="assets/images/privex.png" alt="">
+  <h1 class="title">¡Bienvenido a <span style="font-weight: 600;">Privex Puzzle</span>!</h1>
+  <p class="text-center">
+    <span style="font-weight: 600;">Instrucciones:</span> <br> Antes de comenzar a jugar debes elegir un nivel de
+    dificultad
+    👇
+  </p>
+  <button class="btn" id="select-level-initial" (click)="onSelectLevel($event)">Seleccionar nivel</button>
+  }
+</app-message>

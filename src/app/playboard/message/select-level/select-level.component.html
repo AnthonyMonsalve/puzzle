@@ -1,0 +1,9 @@
+<div class="square-level" (click)="onSelectLevel()">
+  <div class="row" [ngStyle]="{ 'height.%': 100 / dimension }"
+    *ngFor="let i of [].constructor(dimension); let index = index">
+    <div class="item" [ngStyle]="{ 'width.%': 100 / dimension, 'height.%': 100 }"
+      *ngFor="let i of [].constructor(dimension); let index = index">
+
+    </div>
+  </div>
+</div>

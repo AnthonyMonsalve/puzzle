@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { BehaviorSubject } from 'rxjs';
 import { board5 } from '../games/board';
 import { board2 } from '../games/board-2';
 import { board3 } from '../games/board-3';
@@ -10,16 +11,19 @@ import { Board, Square } from './board.interface';
 })
 export class BoardService {
   boards: Array<Board> = [board2, board3, board4, board5];
-  board: Board = this.boards[2];
+  currentBoard: number = 2;
+  board: Board = this.boards[this.currentBoard];
+  private gameIsOverSubject = new BehaviorSubject<boolean>(false);
+  private gameStartSubject = new BehaviorSubject<boolean>(false);
 
   constructor() {}
 
   nextBoard(): void {
-    const index = this.boards.indexOf(this.board);
-    if (index < this.boards.length - 1) {
-      this.board = this.boards[index + 1];
+    if (this.currentBoard < this.boards.length - 1) {
+      this.board = this.boards[this.currentBoard + 1];
     } else {
       this.board = this.boards[0];
+      this.currentBoard = 0;
     }
 
     this.resetActive();
@@ -30,8 +34,30 @@ export class BoardService {
     return this.board;
   }
 
+  getGameIsOver() {
+    return this.gameIsOverSubject.asObservable();
+  }
+
+  setGameIsOver(status: boolean) {
+    this.gameIsOverSubject.next(status);
+  }
+
+  setGameIsStart(status: boolean) {
+    this.gameIsOverSubject.next(status);
+  }
+
   getSquare(square: number): Square {
     return this.board.table[square];
+  }
+
+  setGameBoard(dimension: number): void {
+    this.currentBoard = dimension - 2;
+    this.board = this.boards[dimension - 2];
+    this.gameStartSubject.next(true);
+  }
+
+  getGameIsStart() {
+    return this.gameStartSubject.asObservable();
   }
 
   searchNeighbours(square: number): Array<number> {
@@ -93,8 +119,6 @@ export class BoardService {
     const temp = this.board.table[square1];
     this.board.table[square1] = this.board.table[square2];
     this.board.table[square2] = temp;
-
-    console.log(this.board.table);
   }
 
   setActive(square: number): void {
@@ -113,5 +137,12 @@ export class BoardService {
       }
     }
     return true;
+  }
+
+  restartGame(): void {
+    this.board.table = Object.values(this.board.initialTable);
+    this.setGameIsOver(false);
+    this.resetActive();
+    this.resetFocus();
   }
 }

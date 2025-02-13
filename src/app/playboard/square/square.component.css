@@ -6,15 +6,17 @@
   justify-content: center;
   align-items: center;
   font-size: 20px;
-  box-shadow: inset 0px 0px 0px 1px rgb(0 0 0 / 20%);
+  box-shadow: inset 0px 0px 0px .5px rgb(0 0 0 / 20%);
   background-position: center;
   background-size: cover;
 }
 
 .draggable {
-  cursor: grab; /* Cursor mano para indicar que se puede agarrar */
+  cursor: grab;
+  /* Cursor mano para indicar que se puede agarrar */
 }
 
 .draggable:active {
-  cursor: grabbing; /* Cursor mano cerrada mientras se está arrastrando */
+  cursor: grabbing;
+  /* Cursor mano cerrada mientras se está arrastrando */
 }
