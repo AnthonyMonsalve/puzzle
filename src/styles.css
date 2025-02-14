@@ -34,7 +34,7 @@ body {
 }
 
 .btn {
-  background-color: #001c42;
+  background-color: #38b09c;
   border: 0;
   color: #fff;
   width: 170px;
@@ -47,7 +47,7 @@ body {
 }
 
 .btn:hover {
-  background-color: #003366;
+  background-color: #2f8e7d;
 }
 
 .logo {
@@ -56,12 +56,12 @@ body {
 }
 
 @media screen and (max-width: 500px) {
-  .title{
+  .title {
     font-size: 20px;
     margin: 25px 0;
   }
 
-  .logo{
+  .logo {
     width: 150px;
   }
 
