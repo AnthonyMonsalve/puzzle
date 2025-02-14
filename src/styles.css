@@ -54,3 +54,20 @@ body {
   width: 200px;
   margin: 10px;
 }
+
+@media screen and (max-width: 500px) {
+  .title{
+    font-size: 20px;
+    margin: 25px 0;
+  }
+
+  .logo{
+    width: 150px;
+  }
+
+  .btn {
+    width: 150px;
+    height: 40px;
+    font-size: 13px;
+  }
+}

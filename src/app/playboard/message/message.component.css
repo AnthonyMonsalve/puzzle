@@ -14,3 +14,25 @@ div#gameMessage {
   justify-content: center;
   flex-direction: column;
 }
+
+@media screen and (max-width: 700px) {
+  div#gameMessage {
+    height: 500px;
+    width: 500px;
+  }
+}
+
+@media screen and (max-width: 550px) {
+  div#gameMessage {
+    height: 400px;
+    width: 400px;
+    padding: 20px;
+  }
+}
+
+@media screen and (max-width: 450px) {
+  div#gameMessage {
+    height: 300px;
+    width: 300px;
+  }
+}
