@@ -145,4 +145,11 @@ export class BoardService {
     this.resetActive();
     this.resetFocus();
   }
+
+  finishGame(): void {
+    this.board.table = Object.values(this.board.initialTable);
+    this.setGameIsOver(true);
+    this.resetActive();
+    this.resetFocus();
+  }
 }

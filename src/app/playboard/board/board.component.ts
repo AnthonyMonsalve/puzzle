@@ -38,4 +38,8 @@ export class BoardComponent implements OnInit {
       this.gameStatus.emit(this.gameIsOver);
     }
   }
+
+  onEndGame() {
+    this.boardService.finishGame();
+  }
 }

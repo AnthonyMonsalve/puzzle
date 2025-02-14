@@ -4,11 +4,11 @@ export const board2 = {
   blankImage: 'image.png',
   initialTable: {
     0: {
-      positionImage: '0% 0%',
+      positionImage: '100% 100%',
       focus: false,
-      isBlank: false,
+      isBlank: true,
       active: false,
-      valueExpected: 0,
+      valueExpected: 3,
     },
     1: {
       positionImage: '100% 0%',
@@ -18,27 +18,27 @@ export const board2 = {
       valueExpected: 1,
     },
     2: {
+      positionImage: '0% 0%',
+      focus: false,
+      isBlank: false,
+      active: false,
+      valueExpected: 0,
+    },
+    3: {
       positionImage: '0% 100%',
       focus: false,
       isBlank: false,
       active: false,
       valueExpected: 2,
-    },
-    3: {
-      positionImage: '100% 100%',
-      focus: false,
-      isBlank: true,
-      active: false,
-      valueExpected: 3,
     },
   },
   table: {
     0: {
-      positionImage: '0% 0%',
+      positionImage: '100% 100%',
       focus: false,
-      isBlank: false,
+      isBlank: true,
       active: false,
-      valueExpected: 0,
+      valueExpected: 3,
     },
     1: {
       positionImage: '100% 0%',
@@ -48,18 +48,18 @@ export const board2 = {
       valueExpected: 1,
     },
     2: {
+      positionImage: '0% 0%',
+      focus: false,
+      isBlank: false,
+      active: false,
+      valueExpected: 0,
+    },
+    3: {
       positionImage: '0% 100%',
       focus: false,
       isBlank: false,
       active: false,
       valueExpected: 2,
-    },
-    3: {
-      positionImage: '100% 100%',
-      focus: false,
-      isBlank: true,
-      active: false,
-      valueExpected: 3,
     },
   },
 };

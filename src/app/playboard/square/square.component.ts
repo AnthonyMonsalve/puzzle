@@ -18,30 +18,30 @@ export class SquareComponent implements OnInit {
 
   board!: Board;
   gameIsOver!: boolean;
-  backgroundSize: string = '600px'
+  backgroundSize: string = '600px';
 
   constructor(private boardService: BoardService) {
     this.boardService.getGameIsOver().subscribe((isOver) => {
       this.gameIsOver = isOver;
     });
 
-    this.backgroundSize = this.sizeBackground()
+    this.backgroundSize = this.sizeBackground();
     window.addEventListener('resize', () => {
-      this.backgroundSize = this.sizeBackground()
+      this.backgroundSize = this.sizeBackground();
     });
   }
 
   sizeBackground() {
-    if(window.innerWidth > 700){
-      return '600px'
-    }else if(window.innerWidth <= 700 && window.innerWidth > 550){
-      return '500px'
-    }else if(window.innerWidth <= 550 && window.innerWidth > 450){
-      return '400px'
-    }else if(window.innerWidth <= 450){
-      return '300px'
+    if (window.innerWidth > 700) {
+      return '600px';
+    } else if (window.innerWidth <= 700 && window.innerWidth > 550) {
+      return '500px';
+    } else if (window.innerWidth <= 550 && window.innerWidth > 450) {
+      return '400px';
+    } else if (window.innerWidth <= 450) {
+      return '300px';
     }
-    return '600px'
+    return '600px';
   }
 
   ngOnInit() {
@@ -68,5 +68,6 @@ export class SquareComponent implements OnInit {
 
   onSelectSquare() {
     this.squareSelected.emit(this.square);
+    console.log('Square selected:', this.board);
   }
 }

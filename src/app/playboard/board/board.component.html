@@ -4,3 +4,10 @@
     style="flex: 1"></app-square>
   }
 </div>
+
+<div *ngIf="!gameIsOver" class="d-flex justify-content-center align-items-center"
+  style="padding: 10px; border-radius: 5px; position: absolute; left: 0; right: 0;">
+  <button class="btn" (click)="onEndGame()">
+    Terminar juego
+  </button>
+</div>
