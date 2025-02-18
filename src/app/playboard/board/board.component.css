@@ -1,6 +1,6 @@
 .board {
-  width: 800px;
-  height: 800px;
+  width: 600px;
+  height: 600px;
   display: grid;
   grid-gap: 0;
   border-radius: 20px;
@@ -29,13 +29,5 @@
   .board {
     height: 300px;
     width: 300px;
-  }
-}
-
-
-@media screen and (max-height: 750px) {
-  .board {
-    height: 520px;
-    width: 520px;
   }
 }

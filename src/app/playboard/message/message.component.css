@@ -3,8 +3,8 @@ div#gameMessage {
   left: 50%;
   top: 50%;
   transform: translateX(-50%) translateY(-50%);
-  width: 800px;
-  height: 800px;
+  width: 600px;
+  height: 600px;
   background: #fff;
   padding: 25px;
   border-radius: 20px;
@@ -13,13 +13,6 @@ div#gameMessage {
   align-items: center;
   justify-content: center;
   flex-direction: column;
-}
-
-@media screen and (max-height: 750px) {
-  div#gameMessage {
-    height: 520px;
-    width: 520px;
-  }
 }
 
 @media screen and (max-width: 700px) {

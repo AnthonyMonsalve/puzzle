@@ -32,10 +32,6 @@ export class SquareComponent implements OnInit {
   }
 
   sizeBackground() {
-    if (window.innerHeight < 750) {
-      return '520px';
-    }
-
     if (window.innerWidth > 1200) {
       console.log('1200');
       return '800px';
