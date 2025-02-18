@@ -1,3 +1,5 @@
+<app-play-time *ngIf="!gameIsOver"></app-play-time>
+
 <div class="board" [ngStyle]="{'grid-template-columns': 'repeat(' + board.dimension + ', 1fr)'}">
   @for (square of keys(); track $index) {
   <app-square [square]="square" [squareContent]="board.table[square]" (squareSelected)="onSelectSquare($event)"

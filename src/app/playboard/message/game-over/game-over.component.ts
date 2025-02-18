@@ -12,12 +12,16 @@ import { MessageComponent } from '../message.component';
 })
 export class GameOverComponent {
   gameIsOver!: boolean;
+  timeOut!: boolean;
 
   @Output() selectLevel = new EventEmitter();
 
   constructor(private boardService: BoardService) {
     this.boardService.getGameIsOver().subscribe((isOver) => {
       this.gameIsOver = isOver;
+    });
+    this.boardService.getGameTimeOut().subscribe((timeOut) => {
+      this.timeOut = timeOut;
     });
   }
 

@@ -1,5 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { PlayTimeComponent } from '../../play-time/play-time.component';
 import { SquareComponent } from '../square/square.component';
 import { Board } from './board.interface';
 import { BoardService } from './board.service';
@@ -7,13 +8,14 @@ import { BoardService } from './board.service';
 @Component({
   selector: 'app-board',
   standalone: true,
-  imports: [CommonModule, SquareComponent],
+  imports: [CommonModule, SquareComponent, PlayTimeComponent],
   templateUrl: './board.component.html',
   styleUrls: ['./board.component.css'],
 })
 export class BoardComponent implements OnInit {
   board!: Board;
   gameIsOver!: boolean;
+  timeOut!: boolean;
   @Output() gameStatus = new EventEmitter();
 
   constructor(private boardService: BoardService) {}

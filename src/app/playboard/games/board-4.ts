@@ -1,6 +1,6 @@
 export const board4 = {
   dimension: 4,
-  image: 'airplane.jpg',
+  image: 'helice.jpg',
   blankImage: 'image.png',
   initialTable: {
     0: {

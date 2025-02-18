@@ -1,6 +1,7 @@
 <app-message *ngIf="gameIsOver">
   <img class="logo" src="assets/images/privex.png" alt="">
-  <h1 class="title">¡Gracias por jugar con nosotros!</h1>
+  <h1 class="title" [ngStyle]="{'color': timeOut ? 'red': ''}">
+    {{timeOut ? '¡Se acabó el tiempo!' : '¡Gracias por jugar con nosotros!'}}</h1>
   <button class="btn" id="restar" (click)="restarGame()">Reiniciar</button>
   <button class="btn" id="level" (click)="onSelectLevel()">Seleccionar nivel</button>
 </app-message>

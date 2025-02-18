@@ -1,0 +1,64 @@
+h1 {
+  font-size: 18px;
+  text-align: center;
+  margin: auto;
+  background: #ffffff;
+  margin-bottom: 10px;
+  width: 150px;
+  border-radius: 20px;
+  border: solid 2px #001c42;
+  padding: 5px 10px;
+  position: absolute;
+  top: 5%;
+  left: 0;
+  right: 0;
+}
+
+.danger {
+  border: solid 3px #ff0000;
+  color: #c30000;
+  animation: bounceIn 1s;
+}
+
+@keyframes bounceIn {
+
+  0%,
+  20%,
+  40%,
+  60%,
+  80%,
+  100% {
+    animation-timing-function: cubic-bezier(0.215, 0.610, 0.355, 1.000);
+  }
+
+  0% {
+    opacity: 0;
+    transform: scale3d(0.3, 0.3, 0.3);
+  }
+
+  20% {
+    transform: scale3d(1.1, 1.1, 1.1);
+  }
+
+  40% {
+    transform: scale3d(0.9, 0.9, 0.9);
+  }
+
+  60% {
+    opacity: 1;
+    transform: scale3d(1.03, 1.03, 1.03);
+  }
+
+  80% {
+    transform: scale3d(0.97, 0.97, 0.97);
+  }
+
+  100% {
+    opacity: 1;
+    transform: scale3d(1, 1, 1);
+  }
+}
+
+.bounceIn {
+  animation: bounceIn 1s;
+}

@@ -15,6 +15,7 @@ export class BoardService {
   board: Board = this.boards[this.currentBoard];
   private gameIsOverSubject = new BehaviorSubject<boolean>(false);
   private gameStartSubject = new BehaviorSubject<boolean>(false);
+  private timeOutSubject = new BehaviorSubject<boolean>(false);
 
   constructor() {}
 
@@ -46,6 +47,10 @@ export class BoardService {
     this.gameIsOverSubject.next(status);
   }
 
+  setGameTimeOut(status: boolean) {
+    this.timeOutSubject.next(status);
+  }
+
   getSquare(square: number): Square {
     return this.board.table[square];
   }
@@ -54,10 +59,15 @@ export class BoardService {
     this.currentBoard = dimension - 2;
     this.board = this.boards[dimension - 2];
     this.gameStartSubject.next(true);
+    this.timeOutSubject.next(false);
   }
 
   getGameIsStart() {
     return this.gameStartSubject.asObservable();
+  }
+
+  getGameTimeOut() {
+    return this.timeOutSubject.asObservable();
   }
 
   searchNeighbours(square: number): Array<number> {
@@ -142,6 +152,7 @@ export class BoardService {
   restartGame(): void {
     this.board.table = Object.values(this.board.initialTable);
     this.setGameIsOver(false);
+    this.setGameTimeOut(false);
     this.resetActive();
     this.resetFocus();
   }
