@@ -13,6 +13,7 @@ import { BoardService } from '../board/board.service';
 export class SquareComponent implements OnInit {
   @Input({ required: true }) square!: number;
   @Input({ required: true }) squareContent!: Square;
+  @Input({ required: true }) bgImage!: string;
 
   @Output() squareSelected = new EventEmitter();
 
@@ -52,7 +53,7 @@ export class SquareComponent implements OnInit {
   get imagePath() {
     if (this.squareContent.isBlank && !this.gameIsOver)
       return `assets/images/${this.board.blankImage}`;
-    else return `assets/images/${this.board.image}`;
+    else return `assets/puzzle/${this.bgImage}`;
   }
 
   get backgroundColor() {

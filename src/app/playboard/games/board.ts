@@ -2,6 +2,7 @@ export const board5 = {
   dimension: 5,
   image: 'personas.jpg',
   blankImage: 'image.png',
+  time: 120,
   initialTable: {
     0: {
       positionImage: '0% 25%',

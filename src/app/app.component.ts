@@ -26,7 +26,6 @@ export class AppComponent {
   }
 
   onSelectLevel(status: boolean) {
-    console.log(this.gameStart, 'onselec');
     this.goToSelectLevel = status;
     this.gameStart = !status;
   }

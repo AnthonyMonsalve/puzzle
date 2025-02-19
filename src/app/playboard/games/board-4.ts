@@ -2,6 +2,7 @@ export const board4 = {
   dimension: 4,
   image: 'helice.jpg',
   blankImage: 'image.png',
+  time: 90,
   initialTable: {
     0: {
       positionImage: '0% 33.33%',

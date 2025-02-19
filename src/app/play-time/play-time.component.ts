@@ -11,10 +11,11 @@ import { BoardService } from '../playboard/board/board.service';
   styleUrls: ['./play-time.component.css'],
 })
 export class PlayTimeComponent implements OnDestroy {
-  countdown: number = 90;
+  countdown!: number;
   private subscription!: Subscription;
 
   constructor(private boardService: BoardService) {
+    this.countdown = this.boardService.getBoard().time;
     this.startCountdown();
   }
 

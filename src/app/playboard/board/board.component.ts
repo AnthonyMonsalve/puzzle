@@ -2,6 +2,7 @@ import { CommonModule } from '@angular/common';
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { PlayTimeComponent } from '../../play-time/play-time.component';
 import { SquareComponent } from '../square/square.component';
+import { SquareService } from '../square/square.service';
 import { Board } from './board.interface';
 import { BoardService } from './board.service';
 
@@ -16,15 +17,22 @@ export class BoardComponent implements OnInit {
   board!: Board;
   gameIsOver!: boolean;
   timeOut!: boolean;
+  bgImage!: string;
+  timePlay!: number;
   @Output() gameStatus = new EventEmitter();
 
-  constructor(private boardService: BoardService) {}
+  constructor(
+    private boardService: BoardService,
+    private squareService: SquareService
+  ) {}
 
   ngOnInit(): void {
     this.board = this.boardService.getBoard();
     this.boardService.getGameIsOver().subscribe((isOver) => {
       this.gameIsOver = isOver;
     });
+
+    this.bgImage = this.squareService.getBackgroundImage();
   }
 
   keys(): Array<number> {
